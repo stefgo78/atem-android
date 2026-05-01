@@ -21,7 +21,7 @@ const PRESETS = {
     url: "rtmp://212.33.65.108/live",
     key: "123"
   },
-  KW PSP: {
+  kwpsp: {
     url: "rtmp://212.33.65.108/live",
     key: "kwpsp"
   }
