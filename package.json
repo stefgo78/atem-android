@@ -1,0 +1,13 @@
+{
+  "name": "atem-android",
+  "version": "1.1.0",
+  "description": "Panel do zmiany RTMP w ATEM Mini Pro z presetami (Android/Termux)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "atem-connection": "^3.0.0",
+    "express": "^4.18.2"
+  }
+}
