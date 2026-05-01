@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>ATEM Stream Panel</title>
+  <style>
+    body { font-family: Arial; background:#111; color:#eee; display:flex; justify-content:center; align-items:center; height:100vh; }
+    .box { background:#222; padding:20px; border-radius:10px; width:340px; }
+    input { width:100%; margin:5px 0; padding:8px; border-radius:5px; border:none; }
+    button { width:100%; padding:10px; margin-top:10px; background:#28a745; color:#fff; border:none; border-radius:5px; font-size:16px; }
+    button:hover { background:#218838; }
+    .preset { background:#007bff; }
+    .preset:hover { background:#0069d9; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Ustaw RTMP w ATEM</h2>
+
+    <h3>Własny RTMP</h3>
+    <input id="url" placeholder="rtmp://server/live">
+    <input id="key" placeholder="streamkey123">
+    <button onclick="save()">Zapisz</button>
+
+    <h3>Presety</h3>
+    <button class="preset" onclick="preset('youtube')">YouTube</button>
+    <button class="preset" onclick="preset('facebook')">Facebook</button>
+    <button class="preset" onclick="preset('rtmp1')">RTMP 1</button>
+  </div>
+
+  <script>
+    async function save() {
+      const url = document.getElementById('url').value;
+      const key = document.getElementById('key').value;
+
+      const res = await fetch('/set-stream', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url, key })
+      });
+
+      const data = await res.json();
+      alert(data.message || data.status);
+    }
+
+    async function preset(name) {
+      const res = await fetch('/preset/' + name, { method: 'POST' });
+      const data = await res.json();
+      alert(data.message || data.status);
+    }
+  </script>
+</body>
+</html>
