@@ -7,7 +7,7 @@ app.use(express.json());
 const atem = new Atem();
 
 // 🔧 WPISZ IP SWOJEGO ATEM MINI PRO
-const ATEM_IP = "192.168.1.2";
+const ATEM_IP = "192.168.1.50";
 
 atem.connect(ATEM_IP);
 
@@ -17,13 +17,17 @@ atem.on('connected', () => {
 
 // Presety RTMP
 const PRESETS = {
-  123: {
-    url: "rtmp://212.33.65.108/live",
-    key: "123"
+  youtube: {
+    url: "rtmp://a.rtmp.youtube.com/live2",
+    key: "WPISZ-SWOJ-KLUCZ"
   },
-  kwpsp: {
-    url: "rtmp://212.33.65.108/live",
-    key: "kwpsp"
+  facebook: {
+    url: "rtmp://live-api-s.facebook.com:80/rtmp/",
+    key: "WPISZ-SWOJ-KLUCZ"
+  },
+  rtmp1: {
+    url: "rtmp://192.168.1.10/live",
+    key: "stream1"
   }
 };
 
@@ -43,7 +47,6 @@ app.post('/set-stream', async (req, res) => {
   }
 });
 
-// Ustawianie presetów
 app.post('/preset/:name', async (req, res) => {
   const preset = PRESETS[req.params.name];
 
