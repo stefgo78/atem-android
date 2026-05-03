@@ -24,4 +24,15 @@ Wejdź w przeglądarce na:
 http://IP_ANDROID:3000
 Możesz:
 - wpisać własny RTMP URL + Stream Key  
-- kliknąć preset YouTube / Facebook / RTMP1  
+- kliknąć preset YouTube / Facebook / RTMP1
+- 
+---------------------------instalacja node 18
+pkg update && pkg upgrade
+pkg install curl python make clang git
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+
+nvm install 18
+nvm use 18
+
